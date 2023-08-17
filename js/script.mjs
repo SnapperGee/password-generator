@@ -42,6 +42,7 @@ window.onload = () =>
     const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
     const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
     const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
+    const createBtn = document.getElementById("create-btn");
 
     for (const checkBoxIndex in checkBoxes)
     {
@@ -51,13 +52,26 @@ window.onload = () =>
 
             if (checkBoxRequiredErrMsg !== null)
             {
+                // If no required character types selected
                 if (checkBoxStatus.every(status => status === false))
                 {
                     checkBoxRequiredErrMsg.style.display = "inline-block";
+
+                    if (createBtn !== null)
+                    {
+                        // @ts-ignore
+                        createBtn.disabled = true;
+                    }
                 }
                 else
                 {
                     checkBoxRequiredErrMsg.style.display = "none";
+
+                    if (createBtn !== null)
+                    {
+                        // @ts-ignore
+                        createBtn.disabled = false;
+                    }
                 }
             }
         })
