@@ -1,4 +1,4 @@
-import { selectNumberOptionRange } from "./password-length-criteria.mjs";
+import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
