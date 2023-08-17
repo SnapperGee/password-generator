@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 200%;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 125%;
+  font-weight: 600;
+}
+
 html,
 body,
 .wrapper {
