@@ -16,7 +16,7 @@ import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
 const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
 const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
-const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
+
 const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
 const createBtn = document.getElementById("create-btn");
 const cancelBtn = document.getElementById("cancel-btn");
@@ -69,18 +69,20 @@ if (pwdLengthRangeSlider !== null)
         pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
     });
 }
-const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
 
-for (const checkBoxIndex in checkBoxes)
+const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
+const checkBoxStatusMap = new Map(checkBoxes.map(checkBox => [checkBox, checkBox.checked]));
+// const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
+
+for (const checkBox of checkBoxes)
     {
-        const checkBox = checkBoxes[checkBoxIndex];
         checkBox.addEventListener("change", () => {
-            checkBoxStatus[checkBoxIndex] = checkBox.checked;
+            checkBoxStatusMap.set(checkBox, checkBox.checked);
 
             if (checkBoxRequiredErrMsg !== null)
             {
                 // If no required character types selected
-                if (checkBoxStatus.every(status => status === false))
+                if (Array.from(checkBoxStatusMap.values()).every(status => status === false))
                 {
                     checkBoxRequiredErrMsg.style.display = "inline-block";
 
