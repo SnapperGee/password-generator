@@ -1,4 +1,4 @@
-import { createLabel, selectWithOptionNumberRange } from "./password-length-criteria.mjs";
+import { selectWithOptionNumberRange } from "./password-length-criteria.mjs";
 
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
@@ -17,10 +17,6 @@ const generateBtn = document.querySelector("#generate");
 
 window.onload = () =>
 {
-    const pwdLengthLabel = createLabel({labelText: "Length:  ", forAttr: "pwd-length"})
     const selectOptionRange = selectWithOptionNumberRange({name: "pwd-length", minRange: 8, maxRange: 128});
-    pwdLengthLabel.append(selectOptionRange);
-    const pwdCriteriaForm = document.getElementById("pwd-criteria");
-
-    pwdCriteriaForm?.insertBefore(pwdLengthLabel, pwdCriteriaForm.firstChild);
+    document.getElementById("pwd-length-dropdown-label")?.append(selectOptionRange);
 }

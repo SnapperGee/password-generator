@@ -1,30 +1,3 @@
-export const createLabel = (opts) =>
-{
-    const label = document.createElement("label");
-
-    if (opts.labelText)
-    {
-        label.innerText = opts.labelText;
-    }
-
-    if (opts.forAttr)
-    {
-        label.htmlFor = opts.forAttr;
-    }
-
-    if (opts.id)
-    {
-        label.id = opts.id;
-    }
-
-    if (opts.className)
-    {
-        label.className = opts.className;
-    }
-
-    return label;
-}
-
 export const selectWithOptionNumberRange = (opts) =>
 {
     const selectElement = document.createElement("select");
