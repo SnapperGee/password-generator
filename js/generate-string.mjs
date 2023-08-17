@@ -20,7 +20,7 @@ const symbolChars = Object.freeze([
 ]);
 
 export const chars = Object.freeze({
-    upperCase: uppercaseChars,
+    uppercase: uppercaseChars,
     lowercase: lowercaseChars,
     numeric: numericChars,
     symbol: symbolChars
