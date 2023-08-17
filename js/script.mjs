@@ -1,25 +1,5 @@
 import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
-// Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-
-
-const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
-const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
-
-const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
-const createBtn = document.getElementById("create-btn");
-const cancelBtn = document.getElementById("cancel-btn");
 const pwdCriteriaCard = document.getElementById("pwd-criteria-card");
 const generateBtn = document.getElementById("generate");
 
@@ -32,6 +12,8 @@ generateBtn?.addEventListener("click", () => {
     }
 });
 
+const createBtn = document.getElementById("create-btn");
+
 // Clicking Create buttons when it's not disabled, hides password criteria card,
 // makes generate button visible, and inserts generated text into text box
 createBtn?.addEventListener("click", () => {
@@ -43,6 +25,8 @@ createBtn?.addEventListener("click", () => {
     }
 });
 
+const cancelBtn = document.getElementById("cancel-btn");
+
 // Clicking password criteria card Cancel button hides card and makes Generate button visible
 cancelBtn?.addEventListener("click", () => {
     // @ts-ignore
@@ -52,6 +36,9 @@ cancelBtn?.addEventListener("click", () => {
         generateBtn.style.display = "inline";
     }
 });
+
+const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
+const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
 
 // Update password length dropdown with slider range value.
 pwdLengthRangeSlider?.addEventListener("input", () =>
@@ -72,6 +59,7 @@ if (pwdLengthRangeSlider !== null)
 
 const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
 const checkBoxStatusMap = new Map(checkBoxes.map(checkBox => [checkBox, checkBox.checked]));
+const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
 
 for (const checkBox of checkBoxes)
     {
