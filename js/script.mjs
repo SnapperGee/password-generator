@@ -19,6 +19,39 @@ const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
 const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
 const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
 const createBtn = document.getElementById("create-btn");
+const cancelBtn = document.getElementById("cancel-btn");
+const pwdCriteriaCard = document.getElementById("pwd-criteria-card");
+const generateBtn = document.getElementById("generate");
+
+// Clicking Generate button makes password criteria card visible and hies Generate button.
+generateBtn?.addEventListener("click", () => {
+    if (pwdCriteriaCard !== null)
+    {
+        generateBtn.style.display = "none";
+        pwdCriteriaCard.style.display = "block";
+    }
+});
+
+// When Create buttons is clicked and it's not disabled, hide password criteria
+// card and make generate button visible
+createBtn?.addEventListener("click", () => {
+    // @ts-ignore
+    if (generateBtn !== null && pwdCriteriaCard !== null && createBtn.disabled !== true)
+    {
+        pwdCriteriaCard.style.display = "none";
+        generateBtn.style.display = "inline";
+    }
+});
+
+// Clicking password criteria card Cancel button hides card and makes Generate button visible
+cancelBtn?.addEventListener("click", () => {
+    // @ts-ignore
+    if (generateBtn !== null && pwdCriteriaCard !== null)
+    {
+        pwdCriteriaCard.style.display = "none";
+        generateBtn.style.display = "inline";
+    }
+});
 
 // Update password length dropdown with slider range value.
 pwdLengthRangeSlider?.addEventListener("input", () =>
