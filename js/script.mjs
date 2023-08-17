@@ -16,6 +16,9 @@ import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
 const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
 const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
+const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
+const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
+const createBtn = document.getElementById("create-btn");
 
 // Update password length dropdown with slider range value.
 pwdLengthRangeSlider?.addEventListener("input", () =>
@@ -33,11 +36,7 @@ if (pwdLengthRangeSlider !== null)
         pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
     });
 }
-
-const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
 const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
-const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
-const createBtn = document.getElementById("create-btn");
 
 for (const checkBoxIndex in checkBoxes)
     {
