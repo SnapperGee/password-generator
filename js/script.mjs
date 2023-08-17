@@ -32,8 +32,8 @@ generateBtn?.addEventListener("click", () => {
     }
 });
 
-// When Create buttons is clicked and it's not disabled, hide password criteria
-// card and make generate button visible
+// Clicking Create buttons when it's not disabled, hides password criteria card,
+// makes generate button visible, and inserts generated text into text box
 createBtn?.addEventListener("click", () => {
     // @ts-ignore
     if (generateBtn !== null && pwdCriteriaCard !== null && createBtn.disabled !== true)
