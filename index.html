@@ -14,39 +14,39 @@
       <header>
         <h1>Password Generator</h1>
       </header>
-      <form id="pwd-criteria-card">
-        <!-- Length range slider -->
-        <label for="pwd-length-slider" id="pwd-length-slider-label">Length:  </label>
-        <input type="range" name="pwd-length-slider" id="pwd-length-slider" min="8" max="128" step="1" value="8" />
-        <!-- Label for select options corresponding to range slider generated via JS -->
-        <label for="pwd-length-dropdown" id="pwd-length-dropdown-label"></label>
-        <p id="char-type-require-no-selection-msg">* At least one character type is required. *</p>
-        <fieldset id="char-types">
-          <legend>Require</legend>
-          <ul>
-            <li>
-              <label for="uppercase">Uppercase:  </label>
-              <input type="checkbox" id="uppercase" name="uppercase" checked />
-            </li>
-            <li>
-              <label for="lowercase">Lowercase:  </label>
-              <input type="checkbox" id="lowercase" name="lowercase" checked />
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <label for="numeric">Numeric:  </label>
-              <input type="checkbox" id="numeric" name="numeric" checked />
-            </li>
-            <li>
-              <label for="symbols">Symbols:  </label>
-              <input type="checkbox" id="symbols" name="symbols" checked />
-            </li>
-          </ul>
-        </fieldset>
-        <button type="button" id="confirm-and-create-btn" class="btn">Create</button>
-      </form>
       <div class="card">
+        <form id="pwd-criteria-card">
+          <!-- Length range slider -->
+          <label for="pwd-length-slider" id="pwd-length-slider-label">Length:  </label>
+          <input type="range" name="pwd-length-slider" id="pwd-length-slider" min="8" max="128" step="1" value="8" />
+          <!-- Label for select options corresponding to range slider generated via JS -->
+          <label for="pwd-length-dropdown" id="pwd-length-dropdown-label"></label>
+          <p id="char-type-require-no-selection-msg">* At least one character type is required. *</p>
+          <fieldset id="char-types">
+            <legend>Require</legend>
+            <ul>
+              <li>
+                <label for="uppercase">Uppercase:  </label>
+                <input type="checkbox" id="uppercase" name="uppercase" checked />
+              </li>
+              <li>
+                <label for="lowercase">Lowercase:  </label>
+                <input type="checkbox" id="lowercase" name="lowercase" checked />
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <label for="numeric">Numeric:  </label>
+                <input type="checkbox" id="numeric" name="numeric" checked />
+              </li>
+              <li>
+                <label for="symbols">Symbols:  </label>
+                <input type="checkbox" id="symbols" name="symbols" checked />
+              </li>
+            </ul>
+          </fieldset>
+          <button type="button" id="confirm-and-create-btn" class="btn">Create</button>
+        </form>
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
