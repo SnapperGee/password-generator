@@ -108,7 +108,10 @@ createBtn?.addEventListener("click", () => {
                 }
             }
 
-            console.log(requiredChars);
+            // @ts-ignore
+            const generatedPasswordString = generateString(Number(lengthRangeSlider.value), requiredChars);
+            // console.log(generatedPasswordString);
+            document.getElementsByTagName("textarea")[0].value = generatedPasswordString;
         }
     }
 });
