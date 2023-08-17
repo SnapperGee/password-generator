@@ -1,9 +1,5 @@
 import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
-// Assignment Code
-// @ts-ignore
-const generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 // function writePassword() {
 //   var password = generatePassword();
@@ -16,38 +12,34 @@ const generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
 
-window.onload = () =>
+
+
+const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
+const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
+
+// Update password length dropdown with slider range value.
+pwdLengthRangeSlider?.addEventListener("input", () =>
 {
-    // Generate number range option dropdown and add it to pre-existing label
-    // for it in password criteria card
-    const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
-    document.getElementById("pwd-length-dropdown-label")?.append(pwdLengthOptionSelector);
+    // @ts-ignore
+    pwdLengthOptionSelector.value = pwdLengthRangeSlider.value;
+});
 
-    const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
-
-    // Update password length dropdown with slider range value.
-    pwdLengthRangeSlider?.addEventListener("input", () =>
+// Update slider range with password length dropdown value.
+if (pwdLengthRangeSlider !== null)
+{
+    pwdLengthOptionSelector?.addEventListener("change", () =>
     {
         // @ts-ignore
-        pwdLengthOptionSelector.value = pwdLengthRangeSlider.value;
+        pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
     });
+}
 
-    // Update slider range with password length dropdown value.
-    if (pwdLengthRangeSlider !== null)
-    {
-        pwdLengthOptionSelector?.addEventListener("change", () =>
-        {
-            // @ts-ignore
-            pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
-        });
-    }
+const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
+const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
+const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
+const createBtn = document.getElementById("create-btn");
 
-    const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
-    const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
-    const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
-    const createBtn = document.getElementById("create-btn");
-
-    for (const checkBoxIndex in checkBoxes)
+for (const checkBoxIndex in checkBoxes)
     {
         const checkBox = checkBoxes[checkBoxIndex];
         checkBox.addEventListener("change", () => {
@@ -79,4 +71,10 @@ window.onload = () =>
             }
         })
     }
+
+window.onload = () =>
+{
+    // Generate number range option dropdown and add it to pre-existing label
+    // for it in password criteria card
+    document.getElementById("pwd-length-dropdown-label")?.append(pwdLengthOptionSelector);
 }
