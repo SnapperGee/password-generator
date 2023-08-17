@@ -1,5 +1,20 @@
+const definedOptKeys = Object.freeze(["minRange", "maxRange", "name", "id"]);
+
 export const selectNumberOptionRange = (opts) =>
 {
+    if (opts === undefined || opts === null)
+    {
+        throw new TypeError(`${opts} ${selectNumberOptionRange.name} options.`);
+    }
+
+    for (const key of Object.keys(opts))
+    {
+        if ( ! definedOptKeys.includes(key))
+        {
+            throw new Error(`unrecognized ${selectNumberOptionRange.name} options key: ${key}`);
+        }
+    }
+
     const selectElement = document.createElement("select");
 
     if (opts.name)
@@ -10,11 +25,6 @@ export const selectNumberOptionRange = (opts) =>
     if (opts.id)
     {
         selectElement.id = opts.id;
-    }
-
-    if (opts.className)
-    {
-        selectElement.className = opts.className;
     }
 
     for (let currentNum = opts.minRange; currentNum <= opts.maxRange; ++currentNum)
