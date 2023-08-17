@@ -64,8 +64,6 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 body, a, button, input, select, textarea {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
@@ -97,8 +95,4 @@ a:active, a:hover {
 
 html[xmlns] .clearfix {
     display: block;
-}
-
-* html .clearfix {
-    height: 1%;
 }
