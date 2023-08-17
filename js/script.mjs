@@ -18,6 +18,21 @@ const generateBtn = document.querySelector("#generate");
 window.onload = () =>
 {
     // NOTE!: Make sure name matches html label for attribute
-    const selectOptionRange = selectWithOptionNumberRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
-    document.getElementById("pwd-length-dropdown-label")?.append(selectOptionRange);
+    const pwdLengthOptionSelector = selectWithOptionNumberRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
+    document.getElementById("pwd-length-dropdown-label")?.append(pwdLengthOptionSelector);
+
+    const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
+
+    pwdLengthRangeSlider?.addEventListener("input", () =>
+    {
+        pwdLengthOptionSelector.value = pwdLengthRangeSlider.value;
+    });
+
+    if (pwdLengthRangeSlider !== null)
+    {
+        pwdLengthOptionSelector?.addEventListener("change", () =>
+        {
+            pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
+        });
+    }
 }
