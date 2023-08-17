@@ -18,18 +18,21 @@ const generateBtn = document.querySelector("#generate");
 
 window.onload = () =>
 {
-    // NOTE!: Make sure name matches html label for attribute
+    // Generate number range option dropdown and add it to pre-existing label
+    // for it in password criteria card
     const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
     document.getElementById("pwd-length-dropdown-label")?.append(pwdLengthOptionSelector);
 
     const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");
 
+    // Update password length dropdown with slider range value.
     pwdLengthRangeSlider?.addEventListener("input", () =>
     {
         // @ts-ignore
         pwdLengthOptionSelector.value = pwdLengthRangeSlider.value;
     });
 
+    // Update slider range with password length dropdown value.
     if (pwdLengthRangeSlider !== null)
     {
         pwdLengthOptionSelector?.addEventListener("change", () =>
