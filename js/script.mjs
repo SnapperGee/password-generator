@@ -1,4 +1,5 @@
 import { selectNumberOptionRange } from "./select-number-option-range.mjs";
+import { chars, generateString } from "./generate-string.mjs";
 
 const pwdCriteriaCard = document.getElementById("pwd-criteria-card");
 const generateBtn = document.getElementById("generate");
@@ -9,19 +10,6 @@ generateBtn?.addEventListener("click", () => {
     {
         generateBtn.style.display = "none";
         pwdCriteriaCard.style.display = "block";
-    }
-});
-
-const createBtn = document.getElementById("create-btn");
-
-// Clicking Create buttons when it's not disabled, hides password criteria card,
-// makes generate button visible, and inserts generated text into text box
-createBtn?.addEventListener("click", () => {
-    // @ts-ignore
-    if (generateBtn !== null && pwdCriteriaCard !== null && createBtn.disabled !== true)
-    {
-        pwdCriteriaCard.style.display = "none";
-        generateBtn.style.display = "inline";
     }
 });
 
@@ -57,6 +45,7 @@ if (pwdLengthRangeSlider !== null)
     });
 }
 
+const createBtn = document.getElementById("create-btn");
 const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
 const checkBoxStatusMap = new Map(checkBoxes.map(checkBox => [checkBox, checkBox.checked]));
 const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
@@ -92,6 +81,37 @@ for (const checkBox of checkBoxes)
             }
         })
     }
+
+const lengthRangeSlider = document.getElementById("pwd-length-slider");
+
+// Clicking Create buttons when it's not disabled, hides password criteria card,
+// makes generate button visible, and inserts generated text into text box
+createBtn?.addEventListener("click", () => {
+    // @ts-ignore
+    if (generateBtn !== null && pwdCriteriaCard !== null && createBtn.disabled !== true)
+    {
+        pwdCriteriaCard.style.display = "none";
+        generateBtn.style.display = "inline";
+
+        if (lengthRangeSlider !== null)
+        {
+            // @ts-ignore
+            const length = lengthRangeSlider.ariaValueMax;
+
+            const requiredChars = [];
+
+            for (const checkBoxStatus of checkBoxStatusMap.entries())
+            {
+                if (checkBoxStatus[1] === true)
+                {
+                    requiredChars.push(...chars[checkBoxStatus[0].name.toLowerCase()])
+                }
+            }
+
+            console.log(requiredChars);
+        }
+    }
+});
 
 window.onload = () =>
 {
