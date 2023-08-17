@@ -1,4 +1,4 @@
-import { selectWithOptionNumberRange } from "./password-length-criteria.mjs";
+import { selectNumberOptionRange } from "./password-length-criteria.mjs";
 
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
@@ -18,7 +18,7 @@ const generateBtn = document.querySelector("#generate");
 window.onload = () =>
 {
     // NOTE!: Make sure name matches html label for attribute
-    const pwdLengthOptionSelector = selectWithOptionNumberRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
+    const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
     document.getElementById("pwd-length-dropdown-label")?.append(pwdLengthOptionSelector);
 
     const pwdLengthRangeSlider = document.getElementById("pwd-length-slider");

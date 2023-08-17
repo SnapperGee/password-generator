@@ -1,4 +1,4 @@
-export const selectWithOptionNumberRange = (opts) =>
+export const selectNumberOptionRange = (opts) =>
 {
     const selectElement = document.createElement("select");
 
@@ -27,3 +27,5 @@ export const selectWithOptionNumberRange = (opts) =>
 
     return selectElement;
 }
+
+export default selectNumberOptionRange;
