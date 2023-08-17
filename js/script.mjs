@@ -72,7 +72,6 @@ if (pwdLengthRangeSlider !== null)
 
 const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
 const checkBoxStatusMap = new Map(checkBoxes.map(checkBox => [checkBox, checkBox.checked]));
-// const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
 
 for (const checkBox of checkBoxes)
     {
