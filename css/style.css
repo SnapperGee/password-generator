@@ -31,10 +31,10 @@ header {
 }
 
 #char-types ul {
-  margin: 0;
+  /* margin: 0; */
 }
 
-.card {
+.card, #pwd-criteria-card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   border-width: 1px;
