@@ -62,6 +62,4 @@ window.onload = () =>
             }
         })
     }
-
-    console.log(checkBoxes.length);
 }
