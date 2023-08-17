@@ -1,6 +1,7 @@
 import { selectNumberOptionRange } from "./select-number-option-range.mjs";
 
 // Assignment Code
+// @ts-ignore
 const generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -25,6 +26,7 @@ window.onload = () =>
 
     pwdLengthRangeSlider?.addEventListener("input", () =>
     {
+        // @ts-ignore
         pwdLengthOptionSelector.value = pwdLengthRangeSlider.value;
     });
 
@@ -32,7 +34,34 @@ window.onload = () =>
     {
         pwdLengthOptionSelector?.addEventListener("change", () =>
         {
+            // @ts-ignore
             pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
         });
     }
+
+    const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
+    const checkBoxStatus = checkBoxes.map(checkBox => checkBox.checked);
+    const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
+
+    for (const checkBoxIndex in checkBoxes)
+    {
+        const checkBox = checkBoxes[checkBoxIndex];
+        checkBox.addEventListener("change", () => {
+            checkBoxStatus[checkBoxIndex] = checkBox.checked;
+
+            if (checkBoxRequiredErrMsg !== null)
+            {
+                if (checkBoxStatus.every(status => status === false))
+                {
+                    checkBoxRequiredErrMsg.style.display = "inline-block";
+                }
+                else
+                {
+                    checkBoxRequiredErrMsg.style.display = "none";
+                }
+            }
+        })
+    }
+
+    console.log(checkBoxes.length);
 }
