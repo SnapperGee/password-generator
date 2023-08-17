@@ -23,7 +23,7 @@ export const chars = Object.freeze({
     uppercase: uppercaseChars,
     lowercase: lowercaseChars,
     numeric: numericChars,
-    symbol: symbolChars
+    symbols: symbolChars
 });
 
 export const generateString = (length, chars) => {
