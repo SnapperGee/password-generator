@@ -95,9 +95,6 @@ createBtn?.addEventListener("click", () => {
 
         if (lengthRangeSlider !== null)
         {
-            // @ts-ignore
-            const length = lengthRangeSlider.ariaValueMax;
-
             const requiredChars = [];
 
             for (const checkBoxStatus of checkBoxStatusMap.entries())
@@ -110,7 +107,6 @@ createBtn?.addEventListener("click", () => {
 
             // @ts-ignore
             const generatedPasswordString = generateString(Number(lengthRangeSlider.value), requiredChars);
-            // console.log(generatedPasswordString);
             document.getElementsByTagName("textarea")[0].value = generatedPasswordString;
         }
     }
