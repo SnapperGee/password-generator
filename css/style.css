@@ -27,6 +27,22 @@ body {
   background-color: #f9fbfd;
 }
 
+noscript {
+  background-color: tan;
+  display: inline-block;
+  height: 150px;
+  left: 50%;
+  position: fixed;
+  text-align: center;
+  top: 25%;
+  transform: translate(-50%, 0);
+  width: 500px;
+}
+
+noscript h2 {
+  margin: 15px 0;;
+}
+
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
