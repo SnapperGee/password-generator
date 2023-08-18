@@ -4,7 +4,7 @@ import { chars, generateString } from "./generate-string.mjs";
 const pwdCriteriaCard = document.getElementById("pwd-criteria-card");
 const generateBtn = document.getElementById("generate");
 
-// Clicking Generate button makes password criteria card visible and hies Generate button.
+// Clicking Generate button makes password criteria card visible and hides Generate button.
 generateBtn?.addEventListener("click", () => {
     if (pwdCriteriaCard !== null)
     {
@@ -50,37 +50,40 @@ const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input
 const checkBoxStatusMap = new Map(checkBoxes.map(checkBox => [checkBox, checkBox.checked]));
 const checkBoxRequiredErrMsg = document.getElementById("char-type-require-no-selection-msg");
 
+// Map checkboxes to their check status and add event listener so that if all checkbox statusses are disabled, make
+// error message visible.
 for (const checkBox of checkBoxes)
-    {
-        checkBox.addEventListener("change", () => {
-            checkBoxStatusMap.set(checkBox, checkBox.checked);
+{
+    checkBox.addEventListener("change", () => {
+        checkBoxStatusMap.set(checkBox, checkBox.checked);
 
-            if (checkBoxRequiredErrMsg !== null)
+        if (checkBoxRequiredErrMsg !== null)
+        {
+            // If no checkbox is checked, disable create button and make error message visible
+            if (Array.from(checkBoxStatusMap.values()).every(status => status === false))
             {
-                // If no required character types selected
-                if (Array.from(checkBoxStatusMap.values()).every(status => status === false))
-                {
-                    checkBoxRequiredErrMsg.style.display = "inline-block";
+                checkBoxRequiredErrMsg.style.display = "inline-block";
 
-                    if (createBtn !== null)
-                    {
-                        // @ts-ignore
-                        createBtn.disabled = true;
-                    }
-                }
-                else
+                if (createBtn !== null)
                 {
-                    checkBoxRequiredErrMsg.style.display = "none";
-
-                    if (createBtn !== null)
-                    {
-                        // @ts-ignore
-                        createBtn.disabled = false;
-                    }
+                    // @ts-ignore
+                    createBtn.disabled = true;
                 }
             }
-        })
-    }
+            // If at least once checkbox is checked, hide error message and make create button active
+            else
+            {
+                checkBoxRequiredErrMsg.style.display = "none";
+
+                if (createBtn !== null)
+                {
+                    // @ts-ignore
+                    createBtn.disabled = false;
+                }
+            }
+        }
+    })
+}
 
 const lengthRangeSlider = document.getElementById("pwd-length-slider");
 
