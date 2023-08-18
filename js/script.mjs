@@ -107,7 +107,12 @@ createBtn?.addEventListener("click", () => {
 
             // @ts-ignore
             const generatedPasswordString = generateString(Number(lengthRangeSlider.value), requiredChars);
-            document.getElementsByTagName("textarea")[0].value = generatedPasswordString;
+            const generatedPasswordTextArea = document.querySelector("textarea");
+
+            if (generatedPasswordTextArea !== null)
+            {
+                generatedPasswordTextArea.value = generatedPasswordString;
+            }
         }
     }
 });
