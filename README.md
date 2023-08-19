@@ -12,7 +12,7 @@ There are 2 properties of the generated string that can be controlled:
 
 1. ***characters***
 
-    The types of characters the generated password can contain can be constrained to a combination of 4 different types:
+    The types of characters the generated string can contain can be constrained to a combination of 4 different types:
 
     - **uppercase** - uppercase letters A through Z characters.
     - **lowercase** - lowercase letters A through Z characters.
@@ -23,8 +23,8 @@ Once at least one character type is selected, the sting can be generated.
 
 ### Known Bugs
 
-- When testing locally on my machine, certain states of the checkboxes, create button, and the range scale slider and
-  options dropdown being synced up.
+- When the page is refreshed, the states of the checkboxes, create button, range scale slider and options dropdown get
+  out of sync until they're interacted with by the user.
 
 ### Proposals
 
