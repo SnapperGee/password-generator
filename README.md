@@ -14,8 +14,8 @@ There are 2 properties of the generated string that can be controlled:
 
     The types of characters the generated string can contain can be constrained to a combination of 4 different types:
 
-    - **uppercase** - uppercase letters A through Z characters.
-    - **lowercase** - lowercase letters A through Z characters.
+    - **uppercase** - uppercase letters 'A' through 'Z'.
+    - **lowercase** - lowercase letters 'a' through 'z'.
     - **numeric** - numbers 0 through 9.
     - **symbols** - Non alphanumeric characters.
 
