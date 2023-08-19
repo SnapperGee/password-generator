@@ -23,7 +23,7 @@ Once at least one character type is selected, the sting can be generated.
 
 ### Known Bugs
 
-- When the page is refreshed, the states of the checkboxes, create button, range scale slider and options dropdown get
+- When the page is refreshed, the states of the checkboxes, create button, range scale slider, and options dropdown get
   out of sync until they're interacted with by the user.
 
 ### Proposals
