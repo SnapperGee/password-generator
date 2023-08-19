@@ -6,11 +6,9 @@ const generateBtn = document.getElementById("generate");
 
 // Clicking Generate button makes password criteria card visible and hides Generate button.
 generateBtn?.addEventListener("click", () => {
-    if (pwdCriteriaCard !== null)
-    {
-        generateBtn.style.display = "none";
-        pwdCriteriaCard.style.display = "block";
-    }
+    generateBtn.style.display = "none";
+    // @ts-ignore
+    pwdCriteriaCard.style.display = "block";
 });
 
 const cancelBtn = document.getElementById("cancel-btn");
@@ -18,11 +16,9 @@ const cancelBtn = document.getElementById("cancel-btn");
 // Clicking password criteria card Cancel button hides card and makes Generate button visible
 cancelBtn?.addEventListener("click", () => {
     // @ts-ignore
-    if (generateBtn !== null && pwdCriteriaCard !== null)
-    {
-        pwdCriteriaCard.style.display = "none";
-        generateBtn.style.display = "inline";
-    }
+    pwdCriteriaCard.style.display = "none";
+    // @ts-ignore
+    generateBtn.style.display = "inline";
 });
 
 const pwdLengthOptionSelector = selectNumberOptionRange({name: "pwd-length-dropdown", minRange: 8, maxRange: 128});
@@ -36,14 +32,11 @@ pwdLengthRangeSlider?.addEventListener("input", () =>
 });
 
 // Update slider range with password length dropdown value.
-if (pwdLengthRangeSlider !== null)
+pwdLengthOptionSelector?.addEventListener("change", () =>
 {
-    pwdLengthOptionSelector?.addEventListener("change", () =>
-    {
-        // @ts-ignore
-        pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
-    });
-}
+    // @ts-ignore
+    pwdLengthRangeSlider.value = pwdLengthOptionSelector.value;
+});
 
 const createBtn = document.getElementById("create-btn");
 const checkBoxes = Object.freeze(Array.from(document.getElementsByTagName("input")).filter(input => input.type === "checkbox"));
@@ -57,30 +50,23 @@ for (const checkBox of checkBoxes)
     checkBox.addEventListener("change", () => {
         checkBoxStatusMap.set(checkBox, checkBox.checked);
 
-        if (checkBoxRequiredErrMsg !== null)
+        // If no checkbox is checked, disable create button and make error message visible
+        if (Array.from(checkBoxStatusMap.values()).every(status => status === false))
         {
-            // If no checkbox is checked, disable create button and make error message visible
-            if (Array.from(checkBoxStatusMap.values()).every(status => status === false))
-            {
-                checkBoxRequiredErrMsg.style.display = "inline-block";
+            // @ts-ignore
+            checkBoxRequiredErrMsg.style.display = "inline-block";
 
-                if (createBtn !== null)
-                {
-                    // @ts-ignore
-                    createBtn.disabled = true;
-                }
-            }
-            // If at least once checkbox is checked, hide error message and make create button active
-            else
-            {
-                checkBoxRequiredErrMsg.style.display = "none";
+            // @ts-ignore
+            createBtn.disabled = true;
+        }
+        // If at least once checkbox is checked, hide error message and make create button active
+        else
+        {
+            // @ts-ignore
+            checkBoxRequiredErrMsg.style.display = "none";
 
-                if (createBtn !== null)
-                {
-                    // @ts-ignore
-                    createBtn.disabled = false;
-                }
-            }
+            // @ts-ignore
+            createBtn.disabled = false;
         }
     })
 }
@@ -96,27 +82,22 @@ createBtn?.addEventListener("click", () => {
         pwdCriteriaCard.style.display = "none";
         generateBtn.style.display = "inline";
 
-        if (lengthRangeSlider !== null)
+        const requiredChars = [];
+
+        for (const checkBoxStatus of checkBoxStatusMap.entries())
         {
-            const requiredChars = [];
-
-            for (const checkBoxStatus of checkBoxStatusMap.entries())
+            if (checkBoxStatus[1] === true)
             {
-                if (checkBoxStatus[1] === true)
-                {
-                    requiredChars.push(...chars[checkBoxStatus[0].name.toLowerCase()])
-                }
-            }
-
-            // @ts-ignore
-            const generatedPasswordString = generateString(Number(lengthRangeSlider.value), requiredChars);
-            const generatedPasswordTextArea = document.querySelector("textarea");
-
-            if (generatedPasswordTextArea !== null)
-            {
-                generatedPasswordTextArea.value = generatedPasswordString;
+                requiredChars.push(...chars[checkBoxStatus[0].name.toLowerCase()])
             }
         }
+
+        // @ts-ignore
+        const generatedPasswordString = generateString(Number(lengthRangeSlider.value), requiredChars);
+        const generatedPasswordTextArea = document.querySelector("textarea");
+
+        // @ts-ignore
+        generatedPasswordTextArea.value = generatedPasswordString;
     }
 });
 
