@@ -33,5 +33,6 @@ Once at least one character type is selected, the sting can be generated.
   disabled accordingly.
 
 - When no required character types are selected, an error message appears causing the character requirements box to
-  reposition itself lower (and then reposition when a required character type is selected). If this reposition didn't
-  occur while when the message appears and disappears, that'd improve the UX.
+  reposition itself lower. And then when a character type is selected and the error message disappears, the character
+  requirements box repositions itself again. If this reposition didn't occur when the error message appears and
+  disappears, that'd improve the UX.
