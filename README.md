@@ -21,6 +21,27 @@ There are 2 properties of the generated string that can be controlled:
 
 Once at least one character type is selected, the sting can be generated.
 
+## Preview
+
+Upon entering the webpage, the user is presented with the following:
+
+![init image](./docs/img/init_view.png)
+
+Clicking the "Generate Password" button causes the password criteria box to appear where the user can customize the
+constraints of the generated password:
+
+![password criteria init](./docs/img/pw_criteria_init_view.png)
+
+Once the desired constraints are selected and the "Create" button is clicked, the password criteria box disappears and
+the generated password is displayed:
+
+![Generated password](./docs/img/generated_pw.png)
+
+At least one required character type is required, otherwise an error message is displayed and the "Create" button to
+generate the password is disabled:
+
+![password criteria error](./docs/img/pw_criteria_error_view.png)
+
 ### Known Bugs
 
 - When the page is refreshed, the states of the checkboxes, create button, range scale slider, and options dropdown get
