@@ -36,3 +36,8 @@ Once at least one character type is selected, the sting can be generated.
   reposition itself lower. And then when a character type is selected and the error message disappears, the character
   requirements box repositions itself again. If this reposition didn't occur when the error message appears and
   disappears, that'd improve the UX.
+
+- Right now, the character type labels and their corresponding checkbox html attributes are hard coded into the HTML.
+  The property keys of the chars object is hardcoded into the JavaScript. If the property names and/or html attributes
+  of either are changed so they don't match up anymore (casing ignored) this will break how the characters are retrieved
+  from the chars object. This should probably be fixed.
